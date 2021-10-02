@@ -151,3 +151,26 @@ document.querySelector("#add-btn").onclick = function() {
 document.querySelector("#sub-btn").onclick = function() {
   sendTransaction(false);
 };
+
+const request = window.indexedDB.open("Database", 1);
+
+request.onupgradeneeded = event =>{
+  const db = event.target.result;
+  const DatabaseStore = db.createObjectStore("Database", {keyPath: "ID"});
+  DatabaseStore.createIndex("amountIndex","amount");
+}
+request.onsuccess = () =>{
+  const db = request.result;
+  const transaction = db.transaction(["Database"], "readwrite");
+  const DatabaseStore = transaction.objectStore("Database");
+  const amountIndex = DatabaseStore.index("amountIndex");
+
+  const getRequest = toDoListStore.get("1");
+  getRequest.onsuccess = () => {
+    console.log(getRequest.result);
+  };
+  const getRequestIdx = amountIndex.getAll("complete");
+  getRequestIdx.onsuccess = () => {
+    console.log(getRequestIdx.result); 
+  }; 
+}
