@@ -8,6 +8,8 @@ const FILES_TO_CACHE = [
 	"/styles.css",
 	"/icons/icon-192x192.png",
 	"/icons/icon-512x512.png",
+	"/db.js",
+	"/manifest.webmanifest"
 ];
 self.addEventListener("install", function (evt) {
 	evt.waitUntil(
@@ -19,6 +21,7 @@ self.addEventListener("install", function (evt) {
 	);
     self.skipWaiting();
 });
+
 self.addEventListener("activate", function (evt) {
 	evt.waitUntil(
 		caches.keys().then((keyList) => {

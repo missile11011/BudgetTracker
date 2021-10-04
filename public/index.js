@@ -136,9 +136,7 @@ function sendTransaction(isAdding) {
   })
   .catch(err => {
     // fetch failed, so save in indexed db
-    console.log("offline")
     saveRecord(transaction);
-    
 
     // clear form
     nameEl.value = "";
@@ -153,38 +151,3 @@ document.querySelector("#add-btn").onclick = function() {
 document.querySelector("#sub-btn").onclick = function() {
   sendTransaction(false);
 };
-
-const request = window.indexedDB.open("Database", 1);
-
-request.onupgradeneeded = event =>{
-  const db = event.target.result;
-  const DatabaseStore = db.createObjectStore("Database", {keyPath: "name"});
-  DatabaseStore.createIndex("value","value");
-  DatabaseStore.add({name:"testing", value:5})
-}
-
-request.onsuccess = () =>{
-  const db = request.result;
-  const transaction = db.transaction("Database", "readwrite");
-  const DatabaseStore = transaction.objectStore("Database");
-  
-  // const getRequest = DatabaseStore.get("1");
-  // getRequest.onsuccess = () => {
-  //   console.log(getRequest.result);
-  // };
-  // const getRequestIdx = amountIndex.getAll("complete");
-  // getRequestIdx.onsuccess = () => {
-  //   console.log(getRequestIdx.result); 
-  // }; 
-}
-
-
-function saveRecord(data){
-  request.onerror = event =>{
-    const db = event.target.result;
-  const DatabaseStore = db.createObjectStore("Database", {keyPath: "name"});
-  // DatabaseStore.createIndex("value","value");
-  DatabaseStore.add(data)
-  }
-  
-}
