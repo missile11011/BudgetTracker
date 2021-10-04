@@ -1,6 +1,6 @@
 # BudgetTracker
 
-![Portfolio screenshot](Screenshot.JPEG)
+![Portfolio screenshot](Screenshot.PNG)
 ## About Project
 This web application keeps track of your budget helps helps you keep track of your spending habits. When you first open the web application you are presented with two inputs and a chart. For the inputs one of them is for the name of the transaction and the other is for the amount. When you click on the add or subtract funds is will add that data to the chart with its entry data.
 ## Built With
