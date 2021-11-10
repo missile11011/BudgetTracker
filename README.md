@@ -14,4 +14,4 @@ This web application was built using the following programming language, and too
 ## Contact
 Misael Reyes - misaelrey@gmail.com
 
-Project Link: [https://secure-tor-84554.herokuapp.com/](https://secure-tor-84554.herokuapp.com/)
+Project Link: [https://budget-84554.herokuapp.com/](https://budget-84554.herokuapp.com/)
